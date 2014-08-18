@@ -1,0 +1,900 @@
+\documentclass[a4j]{jarticle}
+
+\makeatletter
+\def\figcaption{\def\@captype{table}\caption}
+\makeatother
+
+\title{設計書}
+\date{\today}
+\usepackage[dvips]{graphicx}
+
+\setlength{\oddsidemargin}{-1in}
+\addtolength{\oddsidemargin}{20mm}
+\setlength{\textwidth}{170mm}
+\pagestyle{empty}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{概要}
+
+本アプリケーションはユーザが今までに作成したファイルの管理を行うためのものである。本アプリケーションを用いることで、ユーザが作成したCソースファイル、実行ファイル、Makefileなどのプログラムに関連するファイルや、図形ファイル、Texファイルなどレポートに関するファイルまで管理することができる。
+
+1つのファイルはタイトル名、副タイトル名、作成日付、ファイルのパス名、分類項目で構成される。それぞれの項目はユーザが任意に設定し、登録することができる。
+
+本アプリケーションの主な機能を以下に示す。
+
+\begin{enumerate}
+\item{新規ファイルの登録}
+\item{既存ファイルの参照}
+\item{既存ファイルの削除}
+\item{任意のファイル、任意の項目に対しての修正}
+\item{新たな分類項目の追加}
+\item{既存の分類項目の削除}
+\item{ファイル一覧のソート}
+\end{enumerate}
+
+\section{全体構成と構成要素に関する各々の説明}
+
+ここでは本アプリケーションの全体構成と構成要素に関する各々の説明を示す。本アプリケーションは、大きく分けて4つの部分からなる。メインルーチン、ファイル登録部、分類項目部、ファイル操作部である。メインルーチンはアプリケーションの核となる部分で、他の3つの部分とつながり、管理する部分である。ファイル登録部は、新規データの追加という要素からなる部分である。分類項目部は、分類項目の追加、分類項目の削除という要素からなる部分である。ファイル操作部は、既存のファイルの参照、修正、削除という要素と、表示するファイル一覧のソートという要素からなる。
+
+
+本アプリケーションを構成する要素と、構成要素間の関連をまとめた図を以下に示す。
+
+\includegraphics{design_document.eps}
+\figcaption{構成要素と構成要素間関連図}
+
+\newpage
+
+\section{関数仕様}
+ここでは使用する関数の仕様を示す。
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{int} & \hspace{1.8in} main \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      & & \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{登録情報をファイルから読み込み、線形連結リストへ登録する。}\\
+      \multicolumn{3}{|l|}{各機能を呼び出す。} \\
+      \multicolumn{3}{|l|}{呼び出しに関しては、switch~case文で行う。} \\
+      \multicolumn{3}{|l|}{正常に終了する際は、戻り値0(int型)を返す。} \\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} incert cell f\hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{リストのノードへのポインタのポインタ} \\\hline
+      char * & main title & \multicolumn{1}{l|}{タイトル名} \\\hline
+      char * & sub title & \multicolumn{1}{l|}{副タイトル名} \\\hline
+      char * & date & \multicolumn{1}{l|}{作成日付} \\\hline
+      char * & path & \multicolumn{1}{l|}{パス名} \\\hline
+      int & category & \multicolumn{1}{l|}{分類項目番号} \\\hline
+      & & \multicolumn{1}{l|}{}\\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストへ新たなファイルを追加する。}\\
+      \multicolumn{3}{|l|}{make original file list、make new file}\\
+      \multicolumn{3}{|l|}{から呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{cell f **} & \hspace{1.8in} make original file list \hspace{1.8in} \\\hline \hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{リストのノードへのポインタのポインタ}\\\hline
+      FILE * & fp & \multicolumn{1}{l|}{ストリームへのポインタ}\\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ファイルの読み込みをする。}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} incert cell c \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline
+      cell c ** & pointer & \multicolumn{1}{l|}{リストのノードへのポインタのポインタ}\\\hline
+      int & new number & \multicolumn{1}{l|}{分類番号}\\\hline
+      char * & new category & \multicolumn{1}{l|}{分類項目名}\\\hline
+      & & \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストへの新たな分類項目の追加}\\
+      \multicolumn{3}{|l|}{make original category listから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{cell c **} & \hspace{1.8in} make original category list \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline
+      cell c ** & pointer & \multicolumn{1}{c|}{リストのノードへのポインタのポインタ}\\\hline
+      FILE * & fp & \multicolumn{1}{c|}{ストリームへのポインタ}\\\hline 
+      & & \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目を読み込む}\\
+      \multicolumn{3}{|l|}{mainから呼び出される}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} insert cell file \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c ** & p & \multicolumn{1}{c|}{分類項目用線形連結リストへのポインタのポインタ} \\\hline
+      cell f ** & pointer & \multicolumn{1}{c|}{ファイル用線形連結リストへのポインタのポインタ}\\\hline
+      & & \multicolumn{1}{c|}{}  \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{新規ファイル追加管理}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} delete file \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{既存ファイル削除管理}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} insert cell category \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c ** & pointer & \multicolumn{1}{l|}{分類項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目追加管理}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{int} & \hspace{1.8in} search n \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c * & a & \multicolumn{1}{l|}{分類項目用線形連結リストへのポインタ} \\\hline
+      int & n & \multicolumn{1}{l|}{探索用番号}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目番号に一致があるかどうか検索}\\
+      \multicolumn{3}{|l|}{insert cel categoryから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{int} & \hspace{1.8in} search c \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c * & a & \multicolumn{1}{l|}{分類項目用線形連結リストへのポインタ} \\\hline
+      char * & category & \multicolumn{1}{l|}{探索用キー}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目名に一致があるかどうか検索}\\
+      \multicolumn{3}{|l|}{insert cel categoryから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} delete category \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c ** & pointer & \multicolumn{1}{l|}{分類項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{既存分類項目削除管理}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} replace number \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c ** & pointer & \multicolumn{1}{l|}{分類項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目番号訂正}\\
+      \multicolumn{3}{|l|}{delete categoryから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} rename file \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{任意のファイル、任意の項目への修正}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} sort \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ソートの管理}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{cell f *} & \hspace{1.8in} search \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & n & \multicolumn{1}{l|}{要素番号}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リスト先頭からn番目のポインタを返す}\\
+      \multicolumn{3}{|l|}{各ソート用関数から呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} change \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタ} \\\hline
+      int & x & \multicolumn{1}{l|}{要素番号}  \\\hline
+      int & y & \multicolumn{1}{l|}{要素番号} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リスト先頭からx番目とy番目を交換する}\\
+      \multicolumn{3}{|l|}{各ソート用関数から呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} category a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap category a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} category d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap category d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} data a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap data a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{作成日付昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} data d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap data d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} path a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{パス名昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap path a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{パス名昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\clearpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} path d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{パス名降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap path d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{パス名降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} m a sub a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名昇順副タイトル名昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap main a sub a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名昇順副タイトル名昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} m a sub d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名昇順副タイトル名降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap main a sub d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名昇順副タイトル名降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} m d sub a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名降順副タイトル名昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap main d sub a \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名降順副タイトル名昇順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} m d sub d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名昇降順副タイトル名降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} downheap main d sub d \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & data & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      int & v & \multicolumn{1}{l|}{リスト先頭からの番号}  \\\hline
+      int & n & \multicolumn{1}{l|}{ノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{タイトル名降順副タイトル名降順ソート}\\
+      \multicolumn{3}{|l|}{sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} print f \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f * & p & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ファイル用線形連結リスト表示}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} print c \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c * & p & \multicolumn{1}{l|}{分類項目項目用線形連結リストへのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目用線形連結リスト表示}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} search f \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & h f & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタ} \\\hline
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ファイルの検索管理}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{cell f **} & \hspace{1.8in} search file \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & h f & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      cell f * & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタ} \\\hline
+      int & number & \multicolumn{1}{l|}{検索項目番号}  \\\hline
+      char * & key & \multicolumn{1}{l|}{検索用キー} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ファイルの検索とリストの作成}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} delete cell \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{指定したセルの開放}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} sub function \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell f ** & pointer & \multicolumn{1}{l|}{ファイル項目用線形連結リストへのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{コメント抽出}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} insert cell category \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell c ** & pointer & \multicolumn{1}{l|}{分類項目項目用線形連結リストへのポインタ} \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \multicolumn{1}{l|}{}  \\\hline
+      & & \multicolumn{1}{l|}{} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{分類項目の追加}\\
+      \multicolumn{3}{|l|}{}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\clearpage
+
+\newpage
+
+\section{保存用ファイルで用いるレコードの書式}
+
+保存用ファイルには、ファイルのタイトル名、副タイトル名、作成日付、パス名、分類項目を記述する。作成日付は「10/18/2010」、パス名はフルパスで、ルートディレクトリからはじまりスラッシュで終わる「/home/g031h105/」のように記述する。
+
+
+\end{document}

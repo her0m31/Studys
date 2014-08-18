@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                    %
+%  checklist.tex: チェックリスト                                       %
+%                                                                    %
+%    2011/08/25                                                      %
+%                                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{jarticle}
+
+\setlength{\oddsidemargin}{-1in}
+\addtolength{\oddsidemargin}{20mm}
+\setlength{\textwidth}{170mm}
+\pagestyle{empty}
+
+\begin{document}
+  \begin{table}
+    \begin{center}
+      {\Large \bfseries チェックリスト}
+      \vspace{.5\baselineskip}
+      \begin{tabular}{|l|l|c|c|c|c|}
+        \hline
+        \multicolumn{1}{|c|}{チェック項目}
+        & \multicolumn{1}{c|}{細目}
+        &　　　入　力　　 & 　出力・結果　 & 確認 & 　不具合等　\\
+        \hline
+        \hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        レコードの追加
+        & 氏名           & IWATE\_Taro & IWATE\_Taro & ○ & \\\hline
+        & 郵便番号        & 0201234 & 0201234 & ○ & \\\hline 
+        & 住所           & Aoya/Morioka/Iwate & Aoya/Morioka/Iwate & ○ & \\\hline
+        & 電話番号        & 09012343772 & 09012343772 & ○ & \\\hline
+        & E-mailアドレス  & Iwate@iwate-uc.jp & Iwate@iwate-uc.jp & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        レコードの削除
+        & & & & & \\\hline\hline
+        データの修正
+        & 氏名           & IWATE\_Taro & IWATE\_Taro & ○ & \\\hline
+        & 郵便番号        & 0201234 & 0201234 & ○ & \\\hline 
+        & 住所           & Aoya/Morioka/Iwate & Aoya/Morioka/Iwate & ○ & \\\hline
+        & 電話番号        & 09012343772 & 09012343772 & ○ & \\\hline
+        & E-mailアドレス  & Iwate@iwate-uc.jp & Iwate@iwate-uc.jp & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        データの検索
+        & & & & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        データのソート（昇順）
+        & & & & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        データのソート（降順）
+        & & & & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ファイルのセーブ  
+        & & & & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ファイルのロード  
+        & & & & ○ & \\\hline\hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        拡張機能
+        & & & & ○ & \\\hline\hline
+      \end{tabular}
+    \end{center}
+  \end{table}
+\end{document}

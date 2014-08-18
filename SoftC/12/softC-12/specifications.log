@@ -1,0 +1,226 @@
+This is pTeX, Version 3.141592-p3.1.9 (euc) (Web2C 7.5.4) (format=platex-euc 2011.4.12)  12 AUG 2011 14:18
+**specifications.tex
+(./specifications.tex
+pLaTeX2e <2006/01/04>+0 (based on LaTeX2e <2003/12/01> patch level 0)
+(/usr/share/texmf/ptex/platex/base/jarticle.cls
+Document Class: jarticle 2002/04/09 v1.4 Standard pLaTeX class
+\c@@paper=\count81
+(/usr/share/texmf/ptex/platex/base/jsize10.clo
+File: jsize10.clo 2002/04/09 v1.4 Standard pLaTeX file (size option)
+)
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 597.
+LaTeX Info: Redefining \mathrm on input line 599.
+LaTeX Info: Redefining \mathbf on input line 600.
+\toclineskip=\dimen118
+\@lnumwidth=\dimen119
+\bibindent=\dimen120
+\heisei=\count90
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.cfg
+File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
+) (./specifications.aux)
+\openout1 = `specifications.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 7.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 7.
+
+(./specifications.toc
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+)
+\tf@toc=\write3
+\openout3 = `specifications.toc'.
+
+ [1
+
+]
+
+LaTeX Warning: File `func_list.eps' not found on input line 18.
+
+
+! LaTeX Error: File `func_list.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \includegraphics{func_list.eps}
+                                    
+? 
+
+! LaTeX Error: Cannot determine size of graphic in func_list.eps (no BoundingBo
+x).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \includegraphics{func_list.eps}
+                                    
+? 
+File: func_list.eps Graphic file (type eps)
+<func_list.eps>
+
+LaTeX Warning: File `func_relation.eps' not found on input line 30.
+
+
+! LaTeX Error: File `func_relation.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...}[.8]{\includegraphics{func_relation.eps}}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in func_relation.eps (no Boundi
+ngBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...}[.8]{\includegraphics{func_relation.eps}}
+                                                  
+? 
+File: func_relation.eps Graphic file (type eps)
+<func_relation.eps> [2] [3]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 47.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 47.
+
+Overfull \hbox (14.24416pt too wide) in paragraph at lines 66--80
+ [] 
+ []
+
+[4]
+Overfull \hbox (19.2442pt too wide) in paragraph at lines 87--99
+ [] 
+ []
+
+
+Overfull \hbox (19.91083pt too wide) in paragraph at lines 104--116
+ [] 
+ []
+
+
+Overfull \hbox (20.4386pt too wide) in paragraph at lines 121--133
+ [] 
+ []
+
+[5]
+Overfull \hbox (12.07751pt too wide) in paragraph at lines 140--153
+ [] 
+ []
+
+
+Overfull \hbox (18.38309pt too wide) in paragraph at lines 158--172
+ [] 
+ []
+
+[6]
+Overfull \hbox (17.8553pt too wide) in paragraph at lines 179--193
+ [] 
+ []
+
+
+Overfull \hbox (14.77193pt too wide) in paragraph at lines 198--212
+ [] 
+ []
+
+[7]
+Overfull \hbox (17.06764pt too wide) in paragraph at lines 219--231
+ [] 
+ []
+
+
+LaTeX Warning: File `layout.eps' not found on input line 241.
+
+
+! LaTeX Error: File `layout.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.241 \includegraphics{layout.eps}
+                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in layout.eps (no BoundingBox).
+
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.241 \includegraphics{layout.eps}
+                                  
+? 
+File: layout.eps Graphic file (type eps)
+<layout.eps> [8] (./specifications.aux) ) 
+Here is how much of TeX's memory you used:
+ 581 strings out of 95552
+ 6634 string characters out of 1191858
+ 59245 words of memory out of 1000000
+ 3777 multiletter control sequences out of 10000+50000
+ 9350 words of font info for 38 fonts, out of 500000 for 2000
+ 14 hyphenation exceptions out of 1000
+ 25i,8n,21p,492b,402s stack positions out of 1500i,500n,5000p,200000b,5000s
+
+Output written on specifications.dvi (8 pages, 17116 bytes).

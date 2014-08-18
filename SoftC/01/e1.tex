@@ -1,0 +1,133 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{平成23年度ソフトウェア演習C\\
+第1回レポ−ト}
+\end{center}
+
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+\vspace{1cm}\begin{center}
+\huge ■レポート履歴■\\
+\end{center}
+
+\huge \hspace{1cm}\begin{tabular}{|c|c|c|}
+ \hline
+ {\bfseries 項目}
+　& {\bfseries 日付}
+　 &　{\bfseries \hspace{1cm} 合否 \hspace{1.5cm}} \\
+ \hline
+ \hline
+ レポート締切 & 5月6日 & \\
+ \hline
+ レポート提出 & 5月6日 & \\
+ \hline
+ レポート確認 & & \\
+ \hline
+ \hline
+ 再レポート締切 & 5月13日 & \\
+ \hline
+ 再レポート提出 & & \\
+ \hline
+ 再レポート確認 & & \\
+ \hline
+\end{tabular}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+
+\setcounter{section}{1}
+\section{マクロ定義}
+
+\hspace{1cm}\begin{tabular}{|c|c|}
+ \hline
+ &　a, bの積を求めるマクロ \\
+ \hline
+ マクロ定義　&　\#define mult(a, b) ((a) * (b)) \\
+ 計算式　&z = mult(x+y, x-y) \\
+ マクロ展開後計算式　&　z = ((x + y) * (x -y)) \\
+ 計算結果x=5, y=3　& z = 16 \\ 
+ 　　　x=2, y=-3 & z = -5 \\
+ \hline
+ &　aの2乗を求めるマクロ \\
+ \hline
+ マクロ定義　&　\#define sqr(a) ((a) * (a)) \\
+ 計算式　&z = sqr(x+y) \\
+ マクロ展開後計算式　&　z = ((x + y) * (x + y)) \\
+ 計算結果x=5, y=3　&z = 64 \\
+ 　　　x=2, y=-3 &z= 1 \\
+ \hline
+\end{tabular}
+
+\newpage
+
+\setcounter{section}{4}
+\section{ユークリッド互除法}
+
+\subsection{プログラム}
+
+\noindent
+■ヘッダファイル
+ \verbatiminput{ec/euclid.h}
+
+■関数gcd()、lcm()
+ \verbatiminput{ec/euclid.c}
+ 
+\newpage
+
+\noindent
+■関数main()
+ \verbatiminput{ec/euclid-main.c}
+
+\subsection{実行結果}
+
+ \verbatiminput{ec/re}
+
+\newpage
+
+\setcounter{section}{6}
+\section{display-text}
+
+\noindent
+■端末で man　mvaddh と入力して調べた。\\
+ヘッダファイルは\textless curses.h \textgreater で同じ種類のものとしてnewterm, endwin, isendwin, set\_term, delscreen があるようだった。\\
+
+\subsection{実行結果}
+
+ \verbatiminput{dis/re}
+
+■Hello, world.が端末の真ん中あたりにHから順番に表示された。
+
+\end{document}

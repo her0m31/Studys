@@ -1,0 +1,4 @@
+struct time{
+  int hour; /* ЛўДж */
+  int min;  /* ЪЌ */
+}  

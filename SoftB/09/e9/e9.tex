@@ -1,0 +1,182 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{平成22年度ソフトウェア演習B\\
+第9回レポ−ト}
+\end{center}
+
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+\vspace{1cm}\begin{center}
+\huge ■レポート履歴■\\
+\end{center}
+
+\huge \hspace{1cm}\begin{tabular}{|c|c|c|}
+ \hline
+ {\bfseries 項目}
+　& {\bfseries 日付}
+　 &　{\bfseries \hspace{1cm} 合否 \hspace{1.5cm}} \\
+ \hline
+ \hline
+ レポート締切 & 12月2日 & \\
+ \hline
+ レポート提出 & 12月2日 & \\
+ \hline
+ レポート確認 & & \\
+ \hline
+ \hline
+ 再レポート締切 & 12月9日 & \\
+ \hline
+ 再レポート提出 & & \\
+ \hline
+ 再レポート確認 & & \\
+ \hline
+\end{tabular}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+
+
+\section{print\_arg.c}
+
+\begin{center}
+\begin{tabular}{c|c}
+ \hline
+ \hline
+変数 (main()関数の引数) & プログラム実行時の値 \\
+ \hline
+ argc & 4\\
+ (argv[1])[1] & 'p'\\
+  argv[2] & ``1.24''\\
+  (argv[3])[5] & '.'\\
+ \hline
+ \hline
+\end{tabular}
+\end{center}
+
+
+argcは引数+1なので4、'p'は第一引数の2文字目なので(argv[1])[1]、”1,24”は第二引数なので、argv[2]、(argv[3])[5]は第三引数の6文字目なので'.'となる。\\
+
+
+
+
+\newpage
+
+\setcounter{section}{2}
+\section{度数分布グラフ}
+
+\subsection{プログラム}
+
+ \verbatiminput{C/fre.c}
+ 
+\noindent
+\textless dat\textgreater
+ \verbatiminput{C/dat}
+
+\subsection{実行結果}
+
+ \verbatiminput{C/re}
+
+\newpage
+
+\setcounter{section}{4}
+\section{math.h}
+
+\subsection{四捨五入}
+
+\subsubsection{}
+\noindent
+(double型) = rint(double型　数値)
+
+四捨五入した数値を整数値にして返す。
+
+
+  \verbatiminput{C/rint.c}
+ 
+  \verbatiminput{C/rinta.c}
+
+\subsubsection{実行結果}
+
+ \verbatiminput{C/re2}
+
+ \verbatiminput{C/re3}
+
+
+
+\newpage
+\subsection{切り上げ}
+
+
+\subsubsection{}
+\noindent
+(double型) = ceil(double型　数値)
+
+数値をそれ以上で最も近い整数値にして返す。
+
+
+  \verbatiminput{C/ceil.c}
+  \verbatiminput{C/ceila.c}
+
+\subsubsection{実行結果}
+
+ \verbatiminput{C/re4}
+
+ \verbatiminput{C/re5}
+
+\subsection{切り捨て}
+
+\subsubsection{}
+\noindent
+(double型) = floor(double型　数値)
+
+数値をそれ以下で最も近い整数にして返す。
+
+  \verbatiminput{C/floor.c}
+ 
+  \verbatiminput{C/floora.c}
+
+\subsubsection{実行結果}
+
+ \verbatiminput{C/re6}
+
+ \verbatiminput{C/re7}
+
+\begin{thebibliography}{20}
+\bibitem{a}
+ Programming Place Plus\\
+ http://www.geocities.jp/ky\_webid/c/063.html,2008\\ 
+\end{thebibliography}
+
+\end{document}

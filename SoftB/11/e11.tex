@@ -1,0 +1,124 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{平成22年度ソフトウェア演習B\\
+第11回レポ−ト}
+\end{center}
+
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+\vspace{1cm}\begin{center}
+\huge ■レポート履歴■\\
+\end{center}
+
+\huge \hspace{1cm}\begin{tabular}{|c|c|c|}
+ \hline
+ {\bfseries 項目}
+　& {\bfseries 日付}
+　 &　{\bfseries \hspace{1cm} 合否 \hspace{1.5cm}} \\
+ \hline
+ \hline
+ レポート締切 & 12月16日 & \\
+ \hline
+ レポート提出 & 12月16日 & \\
+ \hline
+ レポート確認 & & \\
+ \hline
+ \hline
+ 再レポート締切 & 12月24日 & \\
+ \hline
+ 再レポート提出 & & \\
+ \hline
+ 再レポート確認 & & \\
+ \hline
+\end{tabular}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+\normalsize
+
+\section{構造体の定義}
+
+\subsection{日付}
+ \verbatiminput{C/str_date}
+\noindent
+■dayには整数型の日を代入する。monthには月の英語名文字列を代入する。
+\subsection{時刻}
+ \verbatiminput{C/str_time}
+\noindent
+■hourには整数型で時を代入する。minには分を代入する。
+\subsection{本}
+ \verbatiminput{C/str_book}
+\noindent
+■titleには本のタイトルを文字列として代入する。authorには作者名を文字列として代入する。yearには出版年を整数型として代入する。
+\subsection{xy平面上の点}
+ \verbatiminput{C/str_xy}
+\noindent
+■xにはx座標を実数型として代入。yにはy座標を実数型として代入する。
+\subsection{複素数}
+ \verbatiminput{C/str_cn}
+\noindent
+■rnには実部を実数型として代入する。cnには虚部を実数型として代入する。
+
+
+\newpage
+
+
+\setcounter{section}{3}
+\section{}
+
+\subsection{プログラム}
+
+ \verbatiminput{C/lagran.c}
+
+\subsection{実行結果}
+
+ \verbatiminput{C/re}
+
+
+\newpage
+
+
+\section{時刻表}
+
+\subsection{プログラム}
+
+ \verbatiminput{C/timetable.c}
+
+\subsection{実行結果}
+
+ \verbatiminput{C/re2}
+
+\end{document}

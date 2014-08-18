@@ -1,0 +1,115 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{平成23年度ソフトウェア演習C\\
+第10回レポ−ト}
+\end{center}
+
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+\vspace{1cm}\begin{center}
+\huge ■レポート履歴■\\
+\end{center}
+
+\huge \hspace{1cm}\begin{tabular}{|c|c|c|}
+ \hline
+ {\bfseries 項目}
+　& {\bfseries 日付}
+　 &　{\bfseries \hspace{1cm} 合否 \hspace{1.5cm}} \\
+ \hline
+ \hline
+ レポート締切 & 7月7日 & \\
+ \hline
+ レポート提出 & 7月7日 & \\
+ \hline
+ レポート確認 & & \\
+ \hline
+ \hline
+ 再レポート締切 & 7月14日 & \\
+ \hline
+ 再レポート提出 & & \\
+ \hline
+ 再レポート確認 & & \\
+ \hline
+\end{tabular}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+
+\section{AdjacencyMatrix}
+\subsection{adj.c}
+ \verbatiminput{adj.c}
+\subsection{adj.re}
+ \verbatiminput{adj.re}
+
+\newpage
+
+\section{DepthFirstSearch}
+\subsection{dfs.h}
+ \verbatiminput{dfs.h}
+\subsection{dfs.c}
+ \verbatiminput{dfs.c}
+\subsection{main2.c}
+ \verbatiminput{main2.c}
+\subsection{dfs.re}
+ \verbatiminput{dfs.re}
+
+\newpage
+
+\setcounter{section}{3}
+\section{DepthFirstSearch2}
+\subsection{dfsw.h}
+ \verbatiminput{dfsw.h}
+\subsection{dfsw.c}
+ \verbatiminput{dfsw.c}
+\subsection{main4.c}
+ \verbatiminput{main4.c}
+\subsection{dfsw.re}
+ \verbatiminput{dfsw.re}
+
+
+\newpage
+
+\section{Adjacencylist}
+\subsection{al.h}
+\verbatiminput{al.h}
+\subsection{al.c}
+\verbatiminput{al.c}
+\subsection{main5.c}
+\verbatiminput{main5.c}
+\subsection{al.re}
+\verbatiminput{al.re}
+
+\end{document}

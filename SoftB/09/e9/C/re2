@@ -1,0 +1,15 @@
+rint.c
+$ cc -lm -o rint rint.c
+$ rint
+Input a real number:1.5
+	    Integer:2.000000
+$ rint
+Input a real number:1.2
+	    Integer:1.000000
+$ rint
+Input a real number:-1.2
+            Integer:-1.000000
+$ rint
+Input a real number:-1.6
+            Integer:-2.000000
+$ exit

@@ -1,0 +1,14 @@
+\documentclass[a4j]{jarticle}
+
+\title{µ»½Ñ»ÅÍÍ½ñ}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\begin{enumerate}
+\item{Æ°ºîOS¾ò·ï}
+UNIX·ÏOS(Red Hat Enterprise Linux 5)
+\item{}
+\end{enumerate}
+\end{document}

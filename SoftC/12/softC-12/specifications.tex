@@ -1,0 +1,247 @@
+\documentclass[a4j]{jarticle}
+
+\usepackage[dvips]{graphicx}
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+
+\section{概要}
+プログラム全体の流れとしては、まず、ユーザがアプリケーションを起動した際に、機能の選択を促す。この時の機能とは、新規データの追加、分類項目の追加及び削除、ファイル操作の4つである。ユーザが新規データ追加または分類項目の追加、削除を選択した際には、続けて追加情報の入力を促す。ユーザがファイル操作を選択した際には、続けてソートの方法の選択、参照、修正、削除、コピー、移動、リネームのうちのどれか1つを選択してもらうよう入力を促す。これをユーザが終了するまで繰り返していく。 \\
+
+\section{全体構成と構成要素に関する各々の説明}
+このアプリケーションを構成する各要素は図1のようになる。\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{func_list.eps}
+\caption{構成要素のリスト}
+\label{fig:func_list}
+\end{center}
+\end{figure}
+
+まず、mainはアプリケーション全体の核となり、概要で説明した新規データの追加、分類項目の追加及び削除、ファイル操作に関する要素を呼び出す。 \\
+また、mainで登録情報を線形連結リストへ追加していくため、それを行う要素も必要である。 \\
+このアプリケーションでは、ソートにヒープソートを仕様するため、ヒープソートを行う要素とダウンヒープを行う要素の間には関係があると言える。 \\
+また、ファイルの参照や修正、削除などのファイル操作を行う際には、必ず先にソートが行われるため、ファイル操作を行う各要素と、ヒープソート、ダウンヒープを行う要素の間にも関係があると言える。これらを整理し、要素間の関係を図2に示す。 \\
+\begin{figure}[htb]
+\begin{center}
+\scalebox{.8}[.8]{\includegraphics{func_relation.eps}}
+\caption{各要素間の関係}
+\label{fig:func_relation}
+\end{center}
+\end{figure}
+図2のうち四角の中にテキストがあるものは、全てアプリケーションを構成する要素である。　\\
+ある要素から別のある要素に対して、矢印が伸びている場合、その要素間には関係がある。　\\
+また、大きな四角の中に要素がいくつかあり、ある要素からその大きな四角へと矢印が伸びている場合、大きな資格の中に含まれる全ての要素とある要素との間に関係があるということを示している。 \\
+
+\newpage
+\section{プログラム中に自作する関数全てに対する関数仕様}
+
+このアプリケーションでは以下のような関数を使用する。 \\
+各関数がどんなデータを入力とし、どんなデータを出力とするのか、どんな機能を持っているのかを以下に示す。 \\
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{int} & \hspace{1.8in} main \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      & & \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{登録情報をファイルから読み込み、線形連結リストへ登録する。}\\
+      \multicolumn{3}{|l|}{各機能を呼び出す。} \\
+      \multicolumn{3}{|l|}{呼び出しに関しては、switch~case文で行う。} \\
+      \multicolumn{3}{|l|}{正常に終了する際は、戻り値0(int型)を返す。} \\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} incert cell \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell * & pointer & \multicolumn{1}{l|}{リストのノードへのポインタのポインタ} \\\hline
+      char * & file info & \multicolumn{1}{l|}{タイトル名、副タイトル名、作成日付、パス名、分類の順で} \\\hline
+      & & \multicolumn{1}{l|}{格納された2次元配列へのポインタ}\\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストへ新たなデータを追加する。}\\
+      \multicolumn{3}{|l|}{main、file controlから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} incert data \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell ** & pointer & \multicolumn{1}{l|}{リストのノードへのポインタのポインタ} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストにユーザがタイトル名などを入力する形で登録する。}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} incert class \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      & & \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{大域変数class infoに新たな分類項目を追加する。}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} delete class \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      & & \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{大域変数class infoからユーザが追加した分類項目を削除する。}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} heap sort \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell * & head & \multicolumn{1}{l|}{線形連結リストの先頭ノードへのポインタ} \\\hline
+      int & n & \multicolumn{1}{l|}{登録されているノードの個数}  \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストから形成されたヒープをソートする。}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} down heap \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell * & head & \multicolumn{1}{l|}{線形連結リストの先頭ノードへのポインタ} \\\hline
+      int & n & \multicolumn{1}{l|}{登録されているノードの個数}  \\\hline
+      int & v & \multicolumn{1}{l|}{目的のノードが先頭から数えて何番目にあるかを示す。} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストをヒープ化する。}\\
+      \multicolumn{3}{|l|}{heap sortから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} file control \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell * & head & \multicolumn{1}{l|}{線形連結リストの先頭ノードへのポインタ} \\\hline
+      cell * & p & \multicolumn{1}{l|}{線形連結リストの次の追加候補のアドレスへのポインタ} \\\hline
+      int & n & \multicolumn{1}{l|}{登録されているノードの個数}  \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ファイルの参照、修正、削除、コピー、移動、リネームを行う。}\\
+      \multicolumn{3}{|l|}{mainから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{void} & \hspace{1.8in} delete cell \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      cell * & head & \multicolumn{1}{l|}{線形連結リストの先頭ノードへのポインタ} \\\hline
+      cell * & target & \multicolumn{1}{l|}{削除するノードへのポインタ}  \\\hline
+      int & n & \multicolumn{1}{l|}{登録されているノードの個数} \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{ファイル情報を線形連結リストから削除する。}\\
+      \multicolumn{3}{|l|}{file controlから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \multicolumn{2}{|c|}{戻り値の型} & \multicolumn{1}{c|}{関数名}\\\hline
+      \multicolumn{2}{|c|}{cell *} & \hspace{1.8in} search cell \hspace{1.8in} \\\hline\hline
+      引数の型 & 引数の名前 & \multicolumn{1}{c|}{引数の役割}\\\hline 
+      int & target & \multicolumn{1}{l|}{目的のノードが線形連結リストの先頭から数えて何番目にあるかを示す。}  \\\hline
+      & & \\\hline \hline
+      \multicolumn{3}{|c|}{関数の機能}\\\hline
+      \multicolumn{3}{|l|}{線形連結リストから目的のノードを探索し、ポインタを返す。。}\\
+      \multicolumn{3}{|l|}{down heap、file controlから呼び出される。}\\
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{保存用ファイルで用いるレコードの書式}
+保存用ファイルには、ファイルのタイトル名、副タイトル名、作成日付、パス名、分類を記述する。 \\
+記述する順番としては図3のようになる。 \\
+なお、作成日付は「7月28日」のように記述し、パス名はフルパスで記述することとする。 \\
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{layout.eps}
+\caption{保存用ファイルの書式}
+\label{fig:layout}
+\end{center}
+\end{figure}
+
+\end{document}

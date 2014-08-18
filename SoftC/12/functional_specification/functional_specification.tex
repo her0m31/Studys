@@ -1,0 +1,167 @@
+\documentclass[a4j]{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+\huge
+\noindent
+\begin{center}
+%表紙↓
+\vspace{2cm}
+\textgt{機能仕様書}\\
+\vspace{2cm}
+\today
+\end{center}
+
+
+\vspace{5cm}\begin{center}
+\LARGE 学籍番号：0312010142\\
+\LARGE \hspace{-1.1cm}講座名　：澤本研\\
+\LARGE \hspace{-0.48cm}氏名　　：藤田　拓\\
+\end{center}
+%表紙↑
+\newpage
+\normalsize
+\tableofcontents
+\newpage
+\section{概要}
+本アプリケーションはユーザの住所録の管理を行うためのものである。本アプリケーションを用いることで、氏名、郵便番号、住所、電話番号、メールアドレスの5項目からなる住所録を管理するこができる。アプリケーションの機能として、以下のものが挙げられる。\\
+・作成した住所録の保存、読込\\
+・新しい住所録の追加、不要な住所録の削除\\
+・任意の住所録、項目に対しての修正\\
+・任意の項目での検索、昇順並び替え、降順並び替え\\
+・検索履歴表示\\
+
+本アプリケーションの利便性として、住所録の管理が容易になることや「氏名」
+「郵便番号」「住所」「電話番号」「メールアドレス」の情報をまとめて管理で
+きることが挙げられる。さらに、検索履歴表示機能があることで
+参照、検索時の手間が省けることがある。そしてユーザは端末エミュレータにUNIXコマンドを打ち込むことなく住所録の管理ができる。
+\newpage
+\section{使用方法}
+本アプリケーションはユーザが過去に保存した住所録を参照したいときや、新しく住所録情報を追加したいとき、住所録のデータを編集をするときに利用されると想定される。また、すべての機能はUNIXコマンドを入力することなく使用することができるので、ユーザは新たな住所の追加や削除なども容易に行うことができる。大まかな使用手順を次に示す。
+\begin{enumerate}
+
+\subsection{使用手順}
+
+\item 機能一覧が表示される, 過去に検索した住所録があればこれも表示される(検索回数の多い最大5件)
+\item ユーザは使用したい機能を選択する(機能名の隣に表示される番号で選択)
+\begin{enumerate}
+
+
+\item 新規住所録の登録
+\begin{enumerate}
+\item 登録したい住所録のデータを入力(氏名、郵便番号、住所、電話番号、メールアドレス)
+\item 登録後の住所録一覧を表示
+\end{enumerate}
+
+
+\item 既存住所録データの参照\begin{enumerate}
+\item 参照したい住所録を探すための項目を入力(氏名、郵便番号、住所、電話番号、メールアドレスの中から選択して入力)
+\item 入力された項目に一致した住所録一覧を表示
+\end{enumerate}
+
+\item 既存住所録データの削除
+\begin{enumerate}
+\item 削除したい住所録を探すための項目を入力(氏名、郵便番号、住所、電話番号、メールアドレスの中から選択して入力)
+\item 入力された項目に一致した住所録を表示
+\item 本当に削除するかを選択
+\item 指定した住所録削除後の住所録一覧を表示
+\end{enumerate}
+
+\item 任意の住所録、任意の項目に対しての修正
+\begin{enumerate}
+\item 修正したい住所録を探すための項目を入力(氏名、郵便番号、住所、電話番号、メールアドレスの中から選択して入力)
+\item 入力された項目に一致した住所録一覧を表示
+\item 修正する項目、修正後の住所録を入力
+\item 修正後の住所録を表示
+\end{enumerate}
+
+\item 住所録の昇順・降順並び替え
+\begin{enumerate}
+\item 昇順または降順に並び替えたい項目を入力(氏名、郵便番号、住所、電話番号、メールアドレスの中から選択して入力)
+\item 昇順と降順のどちらで並び替えるか入力
+\item 並び替え後の住所録を表示
+\end{enumerate}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\begin{figure}[h]
+\subsection{使用手順概念図}
+\begin{center}
+\scalebox{.495}[.495]{\includegraphics{flowchart1.eps}}
+\caption{使用手順概念図}
+\end{center}
+\end{figure}
+
+\newpage
+
+\section{画面イメージ}
+本アプリケーションを使用する際の画面イメージを機能毎に示す。各画面イメージは選択肢のうち1つを選択した場合のみを例として載せている。
+\begin{figure}[h]
+\subsection{機能選択画面}
+\begin{center}
+\scalebox{.5}[.5]{\includegraphics{template.eps}}
+\caption{機能選択画面}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\subsection{機能選択画面(検索頻度表示がある場合)}
+\begin{center}
+\scalebox{.55}[.55]{\includegraphics{template2.eps}}
+\caption{機能選択画面(検索頻度表示がある場合)}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\subsection{新規住所録の登録}
+\begin{center}
+\scalebox{.55}[.55]{\includegraphics{new_program.eps}}
+\caption{新規住所録の登録}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\subsection{既存住所録の参照}
+\begin{center}
+\scalebox{.55}[.55]{\includegraphics{data_view.eps}}
+\caption{既存住所録の参照}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\subsection{既存住所録の削除}
+\begin{center}
+\scalebox{.55}[.55]{\includegraphics{data_del.eps}}
+\caption{既存住所録の削除}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\subsection{任意の住所録、任意の項目に対しての修正}
+\begin{center}
+\scalebox{.55}[.55]{\includegraphics{data_remake.eps}}
+\caption{任意の住所録、任意の項目に対しての修正}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\subsection{昇順・降順並び替え}
+\begin{center}
+\scalebox{.55}[.55]{\includegraphics{data_sort.eps}}
+\caption{昇順・降順並び替え}
+\end{center}
+\end{figure}
+
+\end{document} 

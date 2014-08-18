@@ -1,0 +1,10 @@
+$ cc -o display-text display-text.c -lcurses
+$ display-text 
+
+
+
+Hello, world.
+
+
+
+$ exit

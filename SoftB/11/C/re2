@@ -1,0 +1,12 @@
+$ timetable
+Enter current time [hh:mm] : 12:34
+	 Departure 	 Waiting time
+1)	 13:12 		 38[min.]
+2)	 13:41 		 67[min.]
+3)	 14:12 		 98[min.]
+$ timetable
+Enter current time [hh:mm] : 21:34
+	 Departure 	 Waiting time
+1)	 22:08 		 34[min.]
+2)	 22:27 		 53[min.]
+$ exit

@@ -1,0 +1,106 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{機能仕様書}
+\end{center}
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+
+\section{Downheap}
+\subsection{dh.h}
+ \verbatiminput{dh.h}
+\subsection{dh.c}
+ \verbatiminput{dh.c}
+\subsection{main1.c}
+ \verbatiminput{main1.c}
+\subsection{dh.re}
+ \verbatiminput{dh.re}
+
+ \subsection{} 
+ \begin{figure}[h]
+   \begin{center}
+     \scalebox{.6}[.499]{\includegraphics{p1.eps}}
+     \caption{ヒープ前}
+   \end{center}
+ \end{figure}
+ \subsection{} 
+ \begin{figure}[h]
+   \begin{center}
+     \scalebox{.6}[.499]{\includegraphics{p2.eps}}
+     \caption{ヒープ後}
+   \end{center}
+ \end{figure}
+
+\newpage
+
+\section{Heapsort}
+\subsection{hs.h}
+ \verbatiminput{hs.h}
+\subsection{hs.c}
+ \verbatiminput{hs.c}
+\subsection{main2.c}
+ \verbatiminput{main2.c}
+\subsection{hs.re}
+ \verbatiminput{hs.re}
+
+\newpage
+
+\setcounter{section}{4}
+\section{Linkedheapsort}
+
+\subsection{lhs.h}
+ \verbatiminput{lhs.h}
+\subsection{lhs.c}
+ \verbatiminput{lhs.c}
+\subsection{main5.c}
+ \verbatiminput{main5.c}
+\subsection{lhs.re}
+ \verbatiminput{lhs.re}
+
+\newpage
+
+\section{Priority queue}
+\subsection{pq.h}
+\verbatiminput{pq.h}
+\subsection{pq.c}
+\verbatiminput{pq.c}
+\subsection{main6.c}
+\verbatiminput{main6.c}
+\subsection{pq.re}
+\verbatiminput{pq.re}
+
+\end{document}

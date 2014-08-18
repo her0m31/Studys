@@ -1,0 +1,5 @@
+struct book{
+  char *title;  /* タイトル */
+  char *author; /* 作者 */
+  int year;     /* 出版年 */
+}

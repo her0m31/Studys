@@ -1,0 +1,4 @@
+struct date{
+  int day;       /* 日 */
+  char *month;   /* 月の名前 */
+}

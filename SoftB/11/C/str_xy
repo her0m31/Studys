@@ -1,0 +1,4 @@
+struct xy{
+  double x; /* x座標 */
+  double y; /* y座標 */
+}

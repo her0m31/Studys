@@ -1,0 +1,65 @@
+\documentclass{jarticle}
+
+\setlength{\oddsidemargin}{-1in}
+\addtolength{\oddsidemargin}{20mm}
+\setlength{\textwidth}{170mm}
+\pagestyle{empty}
+
+\begin{document}
+\begin{table}
+ \begin{center}
+  {\Large \bfseries チェックリスト}
+  \vspace{.5\baselineskip}
+  \begin{tabular}{|l|l|c|c|c|c|}
+   \hline
+   \multicolumn{1}{|c|}{チェック項目}
+    & \multicolumn{1}{c|}{細目}
+     &　　　入　力　　 & 　出力・結果　 & 確認 & 　　不具合等　　\\
+   \hline
+   \hline
+   ファイルの追加
+    & ファイルデータの入力 & & & & \\\hline
+    & リストへの追加 & & & & \\\hline
+    & 分類番号の検索 & & & & \\\hline\hline
+   ファイルの削除
+    & 対象ファイルの検索 & & & & \\\hline
+    & リストからの削除 & & & & \\\hline\hline
+   データの修正
+    & タイトル名 & & & & \\\hline
+    & 副タイトル名 & & & & \\\hline 
+    & 作成日付 & & & & \\\hline
+    & パス名 & & & & \\\hline
+    & 分類項目 & & & & \\\hline\hline
+   ファイルの検索
+    & タイトル名 & & & & \\\hline
+    & 副タイトル名 & & & & \\\hline 
+    & 作成日付 & & & & \\\hline
+    & パス名 & & & & \\\hline
+    & 分類項目 & & & & \\\hline\hline
+   ファイルの検索
+   分類項目の追加
+    & 分類項目名の入力 & & & & \\\hline
+    & リストへの追加       & & & & \\\hline 
+    & 分類項目の検索           & & & & \\\hline\hline
+   分類項目の削除
+    & 分類項目の入力 & & & & \\\hline
+    & リストからの削除 & & & & \\\hline 
+    & 分類番号の修正 & & & & \\\hline\hline
+ 　 ファイルのソート
+    & タイトル昇順副タイトル昇順 & & & & \\\hline
+    & タイトル昇順副タイトル降順 & & & & \\\hline 
+    & タイトル降順副タイトル昇順 & & & & \\\hline
+    & タイトル降順副タイトル降順 & & & & \\\hline
+    & 作成日付昇順 & & & & \\\hline
+    & 作成日付降順 & & & & \\\hline 
+    & パス名昇順 & & & & \\\hline
+    & パス名降順 & & & & \\\hline
+    & 分類番号昇順 & & & & \\\hline
+    & 分類番号降順 & & & & \\\hline\hline
+   拡張機能
+    &コメントの抽出 & & & & \\\hline 
+    & & & & & \\\hline
+  \end{tabular}
+ \end{center}
+\end{table}
+\end{document}

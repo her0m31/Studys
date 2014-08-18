@@ -1,0 +1,115 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{平成23年度ソフトウェア演習C\\
+第3回レポ−ト}
+\end{center}
+
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+\vspace{1cm}\begin{center}
+\huge ■レポート履歴■\\
+\end{center}
+
+\huge \hspace{1cm}\begin{tabular}{|c|c|c|}
+ \hline
+ {\bfseries 項目}
+　& {\bfseries 日付}
+　 &　{\bfseries \hspace{1cm} 合否 \hspace{1.5cm}} \\
+ \hline
+ \hline
+ レポート締切 & 5月20日 & \\
+ \hline
+ レポート提出 & 5月20日 & \\
+ \hline
+ レポート確認 & & \\
+ \hline
+ \hline
+ 再レポート締切 & 5月27日 & \\
+ \hline
+ 再レポート提出 & & \\
+ \hline
+ 再レポート確認 & & \\
+ \hline
+\end{tabular}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+
+
+\setcounter{section}{1}
+\section{composition.c}
+
+\subsection{プログラム}
+
+ \verbatiminput{composition.c}
+
+ \subsection{実行結果}
+
+ \verbatiminput{composition.re}
+
+\newpage
+
+\setcounter{section}{3}
+\section{lab\_ml}
+
+\subsection{プログラム}
+
+ \verbatiminput{lab_ml.c}
+
+\subsection{データ}
+\noindent
+■lab\_ml.txt
+
+ \verbatiminput{lab_ml.dat}
+
+\subsection{実行結果}
+
+ \verbatiminput{lab_ml.re}
+
+\newpage
+
+\setcounter{section}{6}
+\section{schedule.c}
+
+\subsection{プログラム}
+
+ \verbatiminput{schedule.c}
+
+\subsection{実行結果}
+
+ \verbatiminput{schedule_re}
+
+\end{document}

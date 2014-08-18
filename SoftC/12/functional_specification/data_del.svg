@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2440"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   width="586"
+   height="440"
+   version="1.0"
+   sodipodi:docname="data_del.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata2445">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2443">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective2447" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="828"
+     inkscape:window-width="982"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="1.3954545"
+     inkscape:cx="293"
+     inkscape:cy="355.25839"
+     inkscape:window-x="755"
+     inkscape:window-y="47"
+     inkscape:current-layer="svg2440" />
+  <image
+     xlink:href="/home/g031i142/soft-12-1.gif"
+     sodipodi:absref="/home/g031i142/soft-12-1.gif"
+     width="586"
+     height="440"
+     id="image2449"
+     x="0"
+     y="0" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot2589"
+     style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+     transform="matrix(0.8495435,0,0,0.7104043,-22.924735,10.664937)"><flowRegion
+       id="flowRegion2591"><rect
+         id="rect2593"
+         width="644.46582"
+         height="538.12811"
+         x="41.953487"
+         y="57.302326"
+         style="font-size:18px" /></flowRegion><flowPara
+       id="flowPara2597">&gt; 3</flowPara><flowPara
+       id="flowPara2603" /><flowPara
+       id="flowPara2609">削除したい住所録を「氏名」「郵便番号」「住所」「電話番号」「メールアドレス」の順で入力してください。</flowPara><flowPara
+       id="flowPara2613" /><flowPara
+       id="flowPara2617">&gt; IWATE_Taro　020-0193  Sugo,_Takizawa,_Iwate  0196942000  iwate@iwte-pu.ac.jp</flowPara><flowPara
+       id="flowPara2801" /><flowPara
+       id="flowPara2803">「一致した住所録」</flowPara><flowPara
+       id="flowPara2805">IWATE_Taro   020-0193  Sugo,_Takizawa,_Iwate  0196942000  iwate@iwte-pu.ac.jp</flowPara><flowPara
+       id="flowPara2797" /><flowPara
+       id="flowPara2811">本当に削除しますか？</flowPara><flowPara
+       id="flowPara2815">0 : はい　1 : いいえ</flowPara><flowPara
+       id="flowPara2817" /><flowPara
+       id="flowPara2819">&gt; 0</flowPara><flowPara
+       id="flowPara2821" /><flowPara
+       id="flowPara2823">削除完了。</flowPara><flowPara
+       id="flowPara2825" /><flowPara
+       id="flowPara2827">以下の機能一覧から機能を選択</flowPara><flowPara
+       id="flowPara2829">1 : 新規住所録の登録</flowPara><flowPara
+       id="flowPara2831"></flowPara><flowPara
+       id="flowPara2833" /></flowRoot>  <text
+     xml:space="preserve"
+     style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+     x="208.53419"
+     y="302.41043"
+     id="text2595"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan2597"
+       x="208.53419"
+       y="302.41043"></tspan><tspan
+       sodipodi:role="line"
+       id="tspan2599" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:19.68451691px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+     x="-59.245571"
+     y="594.6651"
+     id="text2835"
+     sodipodi:linespacing="125%"
+     transform="scale(-1.4942994,0.6692099)"><tspan
+       sodipodi:role="line"
+       id="tspan2837"
+       x="-59.245571"
+       y="594.6651">・</tspan><tspan
+       sodipodi:role="line"
+       x="-59.245571"
+       y="619.27075"
+       id="tspan2839">・</tspan><tspan
+       sodipodi:role="line"
+       x="-59.245571"
+       y="643.8764"
+       id="tspan2841">・</tspan></text>
+</svg>

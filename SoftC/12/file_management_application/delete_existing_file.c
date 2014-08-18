@@ -1,0 +1,64 @@
+#include "function.h"
+
+void delete_file(struct cell_f **pointer)
+{
+  struct cell_f *p, *q;
+  char a[MAXLEN];
+  char main[MAXLEN], sub[MAXLEN];
+
+  printf("削除するファイルを検索します。\n");
+
+  printf("削除するファイルのタイトル名を入力してください。\n");
+  printf(">");
+  scanf("%s", main);
+
+  printf("削除するファイルの副タイトル名を入力してください。\n");
+  printf(">");
+  scanf("%s", sub);
+
+  p = *pointer;
+
+  while(p != NULL && (strcmp(p->main_title, main)) != 0 && (strcmp(p->sub_title, sub)) != 0){
+    q = p;
+    p = p->next;
+  }
+
+  if(p == NULL){
+    printf("一致するファイルはありませんでした。\n");
+    return;
+  }
+
+  else{
+    printf("%s %s %s %s %d\n", p->main_title, p->sub_title, p->date, p->path, p->category);
+    printf("このファイルを本当に削除しますか？");
+    printf("0: Yes 1: No\n");
+    printf(">");
+
+    scanf("%s", a);
+
+    if(strlen(a) > 1){
+      printf("入力エラーです。\n");
+      return;
+    }
+
+    if(atoi(a) == 1){
+      printf("削除をキャンセルしました。");
+      return;
+    }
+
+    else if(atoi(a) == 0){
+      if(p == *pointer){
+        *pointer = p->next;
+        free((void *)p);
+      }
+      else{
+        q->next = p->next;
+        free((void *)p);
+      }
+
+      printf("削除が完了しました。\n");
+      printf("ファイル一覧を表示します。\n");
+      print_f((*pointer));
+    }
+  }
+}

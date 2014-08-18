@@ -1,0 +1,4 @@
+struct cn{
+  double rn; /* ¼ÂÉô */
+  double cn; /* µõÉô */
+}

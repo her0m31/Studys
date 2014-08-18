@@ -1,0 +1,135 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\Huge
+\noindent
+\begin{center} %表紙↓
+
+\textgt{平成23年度ソフトウェア演習C\\
+第8回レポ−ト}
+\end{center}
+
+
+\vspace{1cm}\begin{flushleft}
+\Huge \hspace{3.5cm} 学籍番号：0312010142\\
+\Huge \hspace{3.5cm} 講座名　：澤本研\\
+\Huge \hspace{3.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+\vspace{1cm}\begin{center}
+\huge ■レポート履歴■\\
+\end{center}
+
+\huge \hspace{1cm}\begin{tabular}{|c|c|c|}
+ \hline
+ {\bfseries 項目}
+　& {\bfseries 日付}
+　 &　{\bfseries \hspace{1cm} 合否 \hspace{1.5cm}} \\
+ \hline
+ \hline
+ レポート締切 & 6月24日 & \\
+ \hline
+ レポート提出 & 6月24日 & \\
+ \hline
+ レポート確認 & & \\
+ \hline
+ \hline
+ 再レポート締切 & 7月1日 & \\
+ \hline
+ 再レポート提出 & & \\
+ \hline
+ 再レポート確認 & & \\
+ \hline
+\end{tabular}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+%レポート課題
+
+\section{Complete Binary Tree}
+
+\subsection{cbt.c}
+ \verbatiminput{cbt.c}
+\subsection{cbt.re}
+ \verbatiminput{cbt.re}
+
+\subsection{} 
+\begin{figure}[h]
+  \begin{center}
+   \scalebox{.6}[.499]{\includegraphics{p1.eps}}
+    \caption{完全二分木}
+  \end{center}
+\end{figure}
+
+\newpage
+
+\section{Binary Search Tree}
+
+\subsection{bst.h}
+ \verbatiminput{bst.h}
+
+\subsection{bst.c}
+ \verbatiminput{bst.c}
+
+\subsection{main2.c}
+ \verbatiminput{main2.c}
+
+\subsection{bst.re}
+ \verbatiminput{bst.re}
+
+\newpage
+
+\section{Traversal}
+
+\subsection{main3.c}
+ \verbatiminput{main3.c}
+
+\subsection{tra.c}
+ \verbatiminput{tra.c}
+
+\subsection{tra.re}
+ \verbatiminput{tra.re}
+
+\newpage
+
+ \subsection{} 
+ \begin{figure}[h]
+   \begin{center}
+     \scalebox{.6}[.499]{\includegraphics{p3.eps}}
+     \caption{二分探索木}
+   \end{center}
+ \end{figure}
+ 
+\newpage
+
+\setcounter{section}{6}
+\section{BST node delete}
+
+\subsection{bnd.c}
+ \verbatiminput{bnd.c}
+
+\subsection{main7.c}
+ \verbatiminput{main7.c}
+
+\subsection{bnd.re}
+ \verbatiminput{bnd.re}
+
+\end{document}

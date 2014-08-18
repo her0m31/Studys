@@ -1,0 +1,84 @@
+/* read.c */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "navi.h"
+
+struct node* read_station( char filename[], int *num )
+{
+  struct node *node_inf = NULL;
+  FILE *fp;
+  char station[30];
+  int  i, j;
+  
+  fp = fopen(filename, "r");
+  if (fp == NULL)
+    return NULL;  
+  
+  fscanf( fp, "%d", num );
+  node_inf = (struct node *)malloc( sizeof(struct node) * (*num) );
+  if (node_inf == NULL)
+    return NULL;
+  
+  for( i = 0; i < (*num) && fscanf( fp, "%d %s", &j, station ) != EOF; i++ ) {
+    
+    node_inf[i]->name = (char *)malloc( sizeof(char)*(strlen(station)+1) );
+    if ( node_inf[i]->name == NULL )
+      return NULL;
+    strcpy( node_inf[i]->name, station );
+  }
+  fclose(fp);
+  
+  return node_inf;
+}
+
+struct edge** read_line( char filename[], int num, int **edges )
+{
+  struct edge** adjacency = NULL, **p;
+  FILE *fp;
+  char linename[25];
+  char line[10];
+  int weight;
+  int start;
+  int end;
+  int i, j;
+  
+  fp = fopen(filename, "r");
+  if (fp == NULL)
+    return NULL;
+  
+  edges = (int **)malloc( sizeof(int *)*num );
+  if (edges == NULL)
+    return NULL;
+
+  for(i = 0; i < num; i++) {
+    edges[i] = (int *)malloc( sizeof(int)*2 );
+    edges[i][0] = -1;
+    edges[i][1] = -1;
+  }
+  
+  for( i = 0; i < num && fscanf(fp, "%d %d", &start, &end) != EOF; i++ ) {
+    edges[i][0] = start;
+    edges[i][1] = end;    
+  }
+  
+  for( i = 0; i < num; i++ ) {
+    adjacency[i] = NULL;
+    for( j = 0; j < num && edges[j][0] != -1 && 
+           fscanf(fp, "%d  %d %d %s %s", &start, &end, &weight, linename, line ) != EOF; j++ ) {
+      strcat( linename, " ");
+      strcat( linename, line);
+      
+      if(i == edges[j][0] || i == edges[j][1] ) {
+        for(p = &adjacency[start]; *p != NULL; p = &((*p)->next) );
+
+        if( insert_cell( p, end, weight, linename ) == -1)
+          return NULL;  
+        
+      }
+    }
+  }
+  fclose(fp);
+
+  return adjacency;
+}

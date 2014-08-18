@@ -1,0 +1,183 @@
+This is pTeX, Version 3.141592-p3.1.9 (euc) (Web2C 7.5.4) (format=platex-euc 2010.4.30)  12 AUG 2010 14:01
+**softC-12.tex
+(./softC-12.tex
+pLaTeX2e <2006/01/04>+0 (based on LaTeX2e <2003/12/01> patch level 0)
+(/usr/share/texmf/ptex/platex/base/jarticle.cls
+Document Class: jarticle 2002/04/09 v1.4 Standard pLaTeX class
+\c@@paper=\count81
+(/usr/share/texmf/ptex/platex/base/jsize10.clo
+File: jsize10.clo 2002/04/09 v1.4 Standard pLaTeX file (size option)
+)
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 597.
+LaTeX Info: Redefining \mathrm on input line 599.
+LaTeX Info: Redefining \mathbf on input line 600.
+\toclineskip=\dimen118
+\@lnumwidth=\dimen119
+\bibindent=\dimen120
+\heisei=\count90
+) (./softC-12.aux)
+\openout1 = `softC-12.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 5.
+ [1
+
+] [2]
+Overfull \hbox (175.24483pt too wide) in paragraph at lines 125--125
+[]    \OT1/cmtt/m/n/10 fprintf(fp_f, "%s %s %s %s %d\n", (*f)->main_title, (*f)
+->sub_title, (*f)->date, (*f)->path, (*f)->category);[] 
+ []
+
+[3] [4] [5] [6] [7]
+Overfull \hbox (12.49625pt too wide) in paragraph at lines 370--370
+[]  \OT1/cmtt/m/n/10 while(p != NULL && p->number != number && (strcmp(p->categ
+ory, category)) != 0){[] 
+ []
+
+[8] [9]
+Overfull \hbox (70.24574pt too wide) in paragraph at lines 439--439
+[]  \OT1/cmtt/m/n/10 while(p != NULL && (strcmp(p->main_title, main)) != 0 && (
+strcmp(p->sub_title, sub)) != 0){[] 
+ []
+
+
+Overfull \hbox (59.74583pt too wide) in paragraph at lines 439--439
+[]    \OT1/cmtt/m/n/10 printf("%s %s %s %s %d\n", p->main_title, p->sub_title, 
+p->date, p->path, p->category);[] 
+ []
+
+[10]
+Overfull \hbox (59.74583pt too wide) in paragraph at lines 509--509
+[]  \OT1/cmtt/m/n/10 char main_title[MAXLEN], sub_title[MAXLEN], date[MAXLEN], 
+path[MAXLEN], category[MAXLEN];[] 
+ []
+
+[11]
+Overfull \hbox (285.49387pt too wide) in paragraph at lines 509--509
+[]  \OT1/cmtt/m/n/10 printf("%s %s %s %s %d\n", (*pointer)->main_title, (*point
+er)->sub_title, (*pointer)->date, (*pointer)->path, (*pointer)->category);[] 
+ []
+
+[12]
+Overfull \hbox (190.99469pt too wide) in paragraph at lines 589--589
+[]\OT1/cmtt/m/n/10 void insert_cell_f(struct cell_f **pointer, char *main_title
+, char *sub_title, char *date, char *path, int category)[] 
+ []
+
+[13] [14]
+Overfull \hbox (59.74583pt too wide) in paragraph at lines 623--623
+[]    \OT1/cmtt/m/n/10 printf("%s %s %s %s %d\n", p->main_title, p->sub_title, 
+p->date, p->path, p->category);[] 
+ []
+
+[15] [16]
+Overfull \hbox (80.74565pt too wide) in paragraph at lines 769--769
+[]\OT1/cmtt/m/n/10 struct cell_f **search_file(struct cell_f **h_f, struct cell
+_f *pointer, int number, char *key)[] 
+ []
+
+[17] [18] [19] [20] [21] [22] [23]
+Overfull \hbox (12.49625pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && ((strcmp(left->date, right->date)) < 0
+) && (2 * v + 1) <= n)[] 
+ []
+
+[24]
+Overfull \hbox (12.49625pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && ((strcmp(left->date, right->date)) > 0
+) && (2 * v + 1) <= n)[] 
+ []
+
+[25]
+Overfull \hbox (658.24062pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && (((strcmp(left->main_title, right->mai
+n_title)) < 0) || ((strcmp(left->main_title, right->main_title)) == 0) && ((str
+cmp(left->sub_title, right->sub_title)) < 0)) && (2 * v + 1) <= n)[] 
+ []
+
+[26] [27]
+Overfull \hbox (658.24062pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && (((strcmp(left->main_title, right->mai
+n_title)) < 0) || ((strcmp(left->main_title, right->main_title)) == 0) && ((str
+cmp(left->sub_title, right->sub_title)) > 0)) && (2 * v + 1) <= n)[] 
+ []
+
+[28]
+Overfull \hbox (658.24062pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && (((strcmp(left->main_title, right->mai
+n_title)) > 0) || ((strcmp(left->main_title, right->main_title)) == 0) && ((str
+cmp(left->sub_title, right->sub_title)) < 0)) && (2 * v + 1) <= n)[] 
+ []
+
+[29]
+Overfull \hbox (658.24062pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && (((strcmp(left->main_title, right->mai
+n_title)) > 0) || ((strcmp(left->main_title, right->main_title)) == 0) && ((str
+cmp(left->sub_title, right->sub_title)) > 0)) && (2 * v + 1) <= n)[] 
+ []
+
+[30]
+Overfull \hbox (12.49625pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && ((strcmp(left->path, right->path)) < 0
+) && (2 * v + 1) <= n)[] 
+ []
+
+[31] [32]
+Overfull \hbox (12.49625pt too wide) in paragraph at lines 1377--1377
+[]  \OT1/cmtt/m/n/10 if(right != NULL && ((strcmp(left->path, right->path)) > 0
+) && (2 * v + 1) <= n)[] 
+ []
+
+[33]
+Overfull \hbox (70.24574pt too wide) in paragraph at lines 1441--1441
+[]  \OT1/cmtt/m/n/10 while(p != NULL && (strcmp(p->main_title, main)) != 0 && (
+strcmp(p->sub_title, sub)) != 0){[] 
+ []
+
+
+Overfull \hbox (59.74583pt too wide) in paragraph at lines 1441--1441
+[]    \OT1/cmtt/m/n/10 printf("%s %s %s %s %d\n", p->main_title, p->sub_title, 
+p->date, p->path, p->category);[] 
+ []
+
+[34] (./softC-12.aux) ) 
+Here is how much of TeX's memory you used:
+ 259 strings out of 95552
+ 2612 string characters out of 1191858
+ 53279 words of memory out of 1000000
+ 3481 multiletter control sequences out of 10000+50000
+ 9210 words of font info for 38 fonts, out of 500000 for 2000
+ 14 hyphenation exceptions out of 1000
+ 22i,4n,19p,237b,418s stack positions out of 1500i,500n,5000p,200000b,5000s
+
+Output written on softC-12.dvi (34 pages, 41900 bytes).
