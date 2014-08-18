@@ -1,0 +1,16 @@
+$ bison -d -y expr.y
+$ flex expr.l
+$ gcc -c y.tab.c lex.yy.c 
+$ gcc y.tab.o lex.yy.o -o expr.exe
+$ ./expr.exe
+23+27
+23 -> INTEGER -> factor
+factor -> term
++ -> 
+term -> expr
+27 -> INTEGER -> factor
+factor -> term
+
+expr + term -> expr
+result = 50
+

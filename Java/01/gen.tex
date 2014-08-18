@@ -1,0 +1,67 @@
+\documentclass{jarticle}
+
+ \setlength{\topmargin}{-0.3in}
+ \setlength{\oddsidemargin}{0pt}
+ \setlength{\evensidemargin}{0pt}
+ \setlength{\textheight}{46\baselineskip}
+ \setlength{\textwidth}{47zw}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage[dvips]{graphicx}
+\usepackage{verbatim}
+
+\begin{document}
+
+\huge
+\noindent
+
+\vspace{2cm}
+\begin{center} %表紙↓
+\textgt{平成23年度基盤システム演習A第1回レポ−ト}
+\end{center}
+
+\vspace{5cm}\begin{flushleft}
+\LARGE \hspace{4.5cm} 学籍番号：0312010142\\
+\LARGE \hspace{4.5cm} 講座名　：澤本研\\
+\LARGE \hspace{4.5cm} 氏名　　：藤田　拓\\
+\end{flushleft}
+
+%表紙↑
+
+\newpage
+\normalsize
+
+\tableofcontents
+
+\newpage
+\begin{flushleft}\LARGE
+◆課題
+\end{flushleft}
+
+%レポート課題
+
+\section{オブジェクト指向}
+\begin{tabular}{|c|c|c|}
+  \hline
+      {\bfseries 　} & {\bfseries 変数} & {\bfseries メソッド } \\
+      \hline
+      \hline
+      スタック & 個数 & 入れる,出す \\
+      \hline
+      キュー & 個数 & 入れる，出す \\
+      \hline
+      線形連結リスト & 次へのポインタ,データ & 追加する,削除する,変更する,検索する \\
+      \hline
+      二分木 & 左の子へのポインタ,右の子へのポインタ,データ & 追加する,削除する,変更する,検索する \\
+      \hline
+      \hline
+\end{tabular}
+
+\section{MyName}
+\verbatiminput{MyName.java}
+
+\section{Text.java}
+\verbatiminput{Text.java}
+
+\end{document}

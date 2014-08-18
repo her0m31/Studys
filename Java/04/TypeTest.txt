@@ -1,0 +1,4 @@
+b1 = false
+b2 = true
+b3 = false
+b4 = true

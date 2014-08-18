@@ -1,0 +1,29 @@
+$ bison -d -y decl.y
+$ flex scanner.l
+$ gcc -c y.tab.c lex.yy.c 
+$ gcc y.tab.o lex.yy.o -o decl.exe
+$ ./decl.exe
+int i,j,k;
+len=3, 	 token=int
+len=1, 	 token=i
+len=1, 	 token=,
+len=1, 	 token=j
+len=1, 	 token=,
+len=1, 	 token=k
+len=1, 	 token=;
+successed!
+
+
+$ gcc -ll lex.yy.c -o lex.exe
+$ ./lex.exe < test1.c
+len=3, 	 token(int)=`int`
+len=1, 	 token(id)=`x`
+len=1, 	 token(comma)=`,`
+len=1, 	 token(id)=`y`
+len=1, 	 token(semi)=`;`
+len=5, 	 token(float)=`float`
+len=1, 	 token(id)=`z`
+len=1, 	 token(semi)=`;`
+ctrl^D
+$
+
