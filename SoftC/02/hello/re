@@ -1,7 +1,0 @@
-$ hello_to
-Hello, everyone.
-$ hello_to Fujita
-Hello, Fujita.
-$ hello_to Fujita Hiromu
-Hello, Fujita Hiromu.
-$ exit

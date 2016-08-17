@@ -1,4 +1,0 @@
-$ cc -o material material.c
-$ material 
-Total quantity of トンカツ is 45.000000 in メニュー. 
-$ exit
