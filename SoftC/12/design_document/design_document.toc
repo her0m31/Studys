@@ -1,4 +1,0 @@
-\contentsline {section}{\numberline {1}概要}{3}
-\contentsline {section}{\numberline {2}全体構成と構成要素に関する各々の説明}{4}
-\contentsline {section}{\numberline {3}関数仕様}{5}
-\contentsline {section}{\numberline {4}保存用ファイルで用いるレコードの書式}{12}
