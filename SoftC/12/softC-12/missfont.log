@@ -1,9 +1,0 @@
-mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 cmtt10
-mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 cmr10
-mktexpk --mfmode / --bdpi 600 --mag 1+120/600 --dpi 720 cmbx12
-mktexpk --mfmode / --bdpi 600 --mag 1+120/600 --dpi 720 cmr10
-mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 min10
-mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 cmr10
-mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 cmr10
-mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 cmr10
-mktexpk --mfmode / --bdpi 600 --mag 0+577/600 --dpi 577 rml
